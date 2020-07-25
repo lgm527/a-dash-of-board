@@ -1,9 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Main from './components/Main';
 
 export default class Dashboard extends React.Component {
     render() {
-        return <div></div>
+        return (
+          <div className='wrapper'>
+          <Router>
+            <Sidebar />
+            <Route path='/' component={Main} />
+          </Router>
+        </div>
+        )
     }
 }
