@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import face3 from '../assets/img/faces/face-3.jpg';
 
 export default class UserProfile extends React.Component {
     render() {
