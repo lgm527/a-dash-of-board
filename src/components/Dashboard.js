@@ -2,6 +2,19 @@ import React from 'react';
 import ChartistGraph from 'react-chartist';
 
 export default class Dashboard extends React.Component {
+
+    state = {
+        pup: ''
+    }
+
+    componentDidMount() {
+        fetch('https://dog.ceo/api/breeds/image/random')
+        .catch(error => console.log(error))
+        .then(res => res.json())
+        .then(pup => {
+            this.setState({ pup: pup.message })
+        })
+    }
     render() {
         let dataPie = {
             labels: ['10%', '20%', '70%'],
@@ -49,20 +62,18 @@ export default class Dashboard extends React.Component {
                     </div>
                 </div>
                 </div>
-                <div className='col-md-8'>
+
+                <div className='col-md-4'>
                 <div className='card'>
                     <div className='card-header '>
-                    <h4 className='card-title'>Eggs Behavior</h4>
-                    <p className='card-category'>24 Hours performance</p>
+                    <h4 className='card-title'>A Friend</h4>
                     </div>
                     <div className='card-body '>
-                    <ChartistGraph data={dataSales} type='Line' />
+                    <img src={this.state.pup} style={{height: '310px', width: '320px'}}/>
                     </div>
                     <div className='card-footer '>
                     <div className='legend'>
-                        <i className='fa fa-circle text-info'></i> Omelette
-                        <i className='fa fa-circle text-danger'></i> Poached
-                        <i className='fa fa-circle text-warning'></i> Boiled
+                        <i className='fa fa-circle text-info'></i> Hi 
                     </div>
                     <hr />
                     <div className='stats'>
